@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Location Spirit</title>
 
 <style>
@@ -37,13 +36,21 @@ p{
   margin-bottom:32px;
 }
 
-button{
+.btn{
+  display:inline-block;
   border:0;
   border-radius:999px;
   padding:16px 28px;
   font-size:16px;
   background:white;
   color:black;
+  text-decoration:none;
+}
+
+.small{
+  margin-top:38px;
+  font-size:14px;
+  opacity:.55;
 }
 </style>
 </head>
@@ -54,24 +61,33 @@ button{
   <h1>Join the spirit network.</h1>
 
   <p>
-  1. Join the Wi-Fi<br>
-  2. Open Safari if needed
+    First, connect to the spirit Wi-Fi.<br>
+    Then open the question page.
   </p>
 
-  <button onclick="joinSpirit()">
-    Join Location Spirit
-  </button>
+  <a href="javascript:void(0)" onclick="copyWifi()" class="btn">
+    Copy Wi-Fi Name
+  </a>
 
-  <p style="margin-top:40px;font-size:14px;opacity:.5;">
-  Wi-Fi: LocationSpirit_OpenSafari<br>
-  Then open 192.168.4.1
-  </p>
+  <div class="small">
+    Wi-Fi: LocationSpirit_OpenSafari<br>
+    After joining, open:<br>
+    192.168.4.1
+  </div>
 </div>
 
 <script>
-function joinSpirit(){
-  window.location.href =
-  "WIFI:T:nopass;S:LocationSpirit_OpenSafari;;";
+function copyWifi(){
+  navigator.clipboard.writeText("LocationSpirit_OpenSafari");
+  alert(
+`Wi-Fi name copied.
+
+1. Open iPhone Settings
+2. Go to Wi-Fi
+3. Join "LocationSpirit_OpenSafari"
+4. Return to Safari
+5. Open 192.168.4.1 if needed`
+  );
 }
 </script>
 
