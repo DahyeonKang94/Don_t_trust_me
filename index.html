@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ask the Spirits</title>
+
   <style>
     body {
       margin: 0;
@@ -88,10 +89,12 @@
     }
   </style>
 </head>
+
 <body>
 
   <section id="page1" class="page active">
     <h1>Ask the Spirits</h1>
+
     <p>
       The spirits are nearby.<br>
       To speak with them, first join their network.
@@ -113,6 +116,7 @@
 
   <section id="page2" class="page">
     <h1>Enter Your Question</h1>
+
     <p>
       Do not ask for a direct answer.<br>
       Let the spirits return your question differently.
@@ -126,10 +130,13 @@
 
   <section id="page3" class="page">
     <h1>Your Question Was Sent</h1>
+
     <p id="shownQuestion"></p>
+
     <p>
       Now turn on the switch in front of the spirit.
     </p>
+
     <button onclick="goPage(2)">Ask Again</button>
   </section>
 
@@ -137,20 +144,31 @@
     const WIFI_NAME = "JOIN_THE_SPIRITS";
 
     function goPage(num) {
-      document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+      document.querySelectorAll(".page").forEach(function(page) {
+        page.classList.remove("active");
+      });
+
       document.getElementById("page" + num).classList.add("active");
     }
 
     function copyWifi() {
-      navigator.clipboard.writeText(WIFI_NAME);
-      alert("Wi-Fi name copied: " + WIFI_NAME);
+      navigator.clipboard.writeText(WIFI_NAME).then(function() {
+        alert("Wi-Fi name copied:\n\n" + WIFI_NAME);
+      }).catch(function() {
+        alert("Wi-Fi name:\n\n" + WIFI_NAME);
+      });
     }
 
     function openWifiSettings() {
-      alert("Open Wi-Fi settings and join: " + WIFI_NAME + "\\nThen return to this page.");
+      alert(
+        "If Wi-Fi settings do not open automatically, open Settings manually and join:\n\n" +
+        WIFI_NAME +
+        "\n\nThen return to this page."
+      );
 
-      // iPhone/Android browsers do not reliably allow direct Wi-Fi setting links.
-      // This alert is the most stable exhibition-safe method.
+      setTimeout(function() {
+        window.location.href = "App-Prefs:root=WIFI";
+      }, 300);
     }
 
     function submitQuestion() {
@@ -164,6 +182,7 @@
       localStorage.setItem("spirit_question", q);
 
       document.getElementById("shownQuestion").innerText = '"' + q + '"';
+
       goPage(3);
     }
   </script>
