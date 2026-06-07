@@ -1,95 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Location Spirit</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ask the Spirits</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4efe8;
+      color: #111;
+      text-align: center;
+    }
 
-<style>
-html,body{
-  margin:0;
-  width:100%;
-  height:100%;
-  background:black;
-  color:white;
-  font-family:Arial,sans-serif;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
+    .page {
+      min-height: 100vh;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 28px;
+      box-sizing: border-box;
+    }
 
-.wrap{
-  max-width:420px;
-  padding:30px;
-}
+    .active {
+      display: flex;
+    }
 
-h1{
-  font-size:48px;
-  font-weight:400;
-  margin-bottom:24px;
-}
+    h1 {
+      font-size: 34px;
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
 
-p{
-  opacity:.8;
-  line-height:1.7;
-  margin-bottom:32px;
-}
+    p {
+      font-size: 17px;
+      line-height: 1.6;
+      max-width: 340px;
+    }
 
-.btn{
-  display:inline-block;
-  border:0;
-  border-radius:999px;
-  padding:16px 28px;
-  font-size:16px;
-  background:white;
-  color:black;
-  text-decoration:none;
-}
+    button {
+      margin-top: 18px;
+      padding: 14px 22px;
+      border: 1px solid #111;
+      border-radius: 999px;
+      background: transparent;
+      color: #111;
+      font-size: 16px;
+      cursor: pointer;
+    }
 
-.small{
-  margin-top:38px;
-  font-size:14px;
-  opacity:.55;
-}
-</style>
+    .wifi-box {
+      margin-top: 20px;
+      padding: 18px;
+      border: 1px solid #111;
+      border-radius: 18px;
+      max-width: 340px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .wifi-name {
+      font-size: 22px;
+      margin: 10px 0;
+      letter-spacing: 1px;
+    }
+
+    textarea {
+      width: 100%;
+      max-width: 360px;
+      height: 130px;
+      margin-top: 20px;
+      padding: 16px;
+      border: 1px solid #111;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.35);
+      font-size: 16px;
+      box-sizing: border-box;
+      resize: none;
+      color: #111;
+    }
+
+    .small {
+      font-size: 13px;
+      opacity: 0.75;
+      margin-top: 14px;
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="wrap">
-  <h1>Join the spirit network.</h1>
+  <section id="page1" class="page active">
+    <h1>Ask the Spirits</h1>
+    <p>
+      The spirits are nearby.<br>
+      To speak with them, first join their network.
+    </p>
 
-  <p>
-    First, connect to the spirit Wi-Fi.<br>
-    Then open the question page.
-  </p>
+    <div class="wifi-box">
+      <div>Wi-Fi name</div>
+      <div class="wifi-name" id="wifiName">JOIN_THE_SPIRITS</div>
+      <button onclick="copyWifi()">Copy Wi-Fi Name</button>
+    </div>
 
-  <a href="javascript:void(0)" onclick="copyWifi()" class="btn">
-    Copy Wi-Fi Name
-  </a>
+    <button onclick="openWifiSettings()">Open Wi-Fi Settings</button>
+    <button onclick="goPage(2)">I Joined the Network</button>
 
-  <div class="small">
-    Wi-Fi: LocationSpirit_OpenSafari<br>
-    After joining, open:<br>
-    192.168.4.1
-  </div>
-</div>
+    <p class="small">
+      After joining the Wi-Fi, return to this page.
+    </p>
+  </section>
 
-<script>
-function copyWifi(){
-  navigator.clipboard.writeText("LocationSpirit_OpenSafari");
-  alert(
-`Wi-Fi name copied.
+  <section id="page2" class="page">
+    <h1>Enter Your Question</h1>
+    <p>
+      Do not ask for a direct answer.<br>
+      Let the spirits return your question differently.
+    </p>
 
-1. Open iPhone Settings
-2. Go to Wi-Fi
-3. Join "LocationSpirit_OpenSafari"
-4. Return to Safari
-5. Open 192.168.4.1 if needed`
-  );
-}
-</script>
+    <textarea id="question" placeholder="Write your question here..."></textarea>
+
+    <button onclick="submitQuestion()">Send to the Spirits</button>
+    <button onclick="goPage(1)">Back</button>
+  </section>
+
+  <section id="page3" class="page">
+    <h1>Your Question Was Sent</h1>
+    <p id="shownQuestion"></p>
+    <p>
+      Now turn on the switch in front of the spirit.
+    </p>
+    <button onclick="goPage(2)">Ask Again</button>
+  </section>
+
+  <script>
+    const WIFI_NAME = "JOIN_THE_SPIRITS";
+
+    function goPage(num) {
+      document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+      document.getElementById("page" + num).classList.add("active");
+    }
+
+    function copyWifi() {
+      navigator.clipboard.writeText(WIFI_NAME);
+      alert("Wi-Fi name copied: " + WIFI_NAME);
+    }
+
+    function openWifiSettings() {
+      alert("Open Wi-Fi settings and join: " + WIFI_NAME + "\\nThen return to this page.");
+
+      // iPhone/Android browsers do not reliably allow direct Wi-Fi setting links.
+      // This alert is the most stable exhibition-safe method.
+    }
+
+    function submitQuestion() {
+      const q = document.getElementById("question").value.trim();
+
+      if (!q) {
+        alert("Please write a question first.");
+        return;
+      }
+
+      localStorage.setItem("spirit_question", q);
+
+      document.getElementById("shownQuestion").innerText = '"' + q + '"';
+      goPage(3);
+    }
+  </script>
 
 </body>
 </html>
