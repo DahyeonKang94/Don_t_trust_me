@@ -16,58 +16,59 @@ body{
 }
 
 .wrap{
-  width:90%;
-  max-width:520px;
-  margin:0 auto;
-  padding:120px 20px 40px;
+  width:100%;
+  padding:120px 0 60px;
 }
 
 .small{
   font-size:15px;
-  letter-spacing:2px;
+  letter-spacing:3px;
   text-transform:uppercase;
-  margin-bottom:28px;
+  margin-bottom:34px;
   opacity:0.55;
 }
 
-h1{
+.banner{
+  width:100vw;
+  background:black;
+  color:white;
+  padding:30px 20px;
+  box-sizing:border-box;
+  font-weight:800;
+  letter-spacing:0.5px;
+}
+
+.title{
   font-size:30px;
   line-height:1.25;
-  margin:0 0 48px;
-  font-weight:800;
+}
+
+.wifi{
+  font-size:28px;
+  line-height:1.2;
+  margin-top:34px;
+  margin-bottom:34px;
+}
+
+.button{
+  display:block;
+  text-decoration:none;
+  margin-top:48px;
+  font-size:30px;
+  line-height:1.2;
 }
 
 p{
   font-size:21px;
   line-height:1.55;
-  margin:22px 0;
-}
-
-.wifi{
-  font-size:24px;
-  font-weight:800;
-  margin:16px 0 36px;
+  margin:38px 24px;
 }
 
 .note{
   font-size:18px;
-  line-height:1.55;
   opacity:0.75;
-  margin-top:36px;
-}
-
-.btn{
-  display:block;
-  margin:52px auto 0;
-  padding:20px;
-  width:230px;
-  background:black;
-  color:white;
-  text-decoration:none;
-  border-radius:18px;
-  font-size:25px;
-  font-weight:800;
-  box-sizing:border-box;
+  margin-top:42px;
+  margin-bottom:0;
 }
 </style>
 </head>
@@ -78,11 +79,16 @@ p{
 
 <div class="small">Spirit Network</div>
 
-<h1>Do You Want To Connect<br>With Spirits?</h1>
+<div class="banner title">
+Do You Want To Connect<br>
+With Spirits?
+</div>
 
 <p>Connect to Wi-Fi</p>
 
-<p class="wifi">Dont_trust_me_</p>
+<div class="banner wifi">
+Dont_trust_me_
+</div>
 
 <p>
 After connecting,<br>
@@ -94,7 +100,9 @@ If you are already connected,<br>
 press the button below.
 </p>
 
-<a class="btn" href="http://192.168.4.101">Why Not?</a>
+<a class="banner button" href="http://192.168.4.101">
+Why Not?
+</a>
 
 </div>
 
