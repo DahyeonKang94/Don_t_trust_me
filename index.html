@@ -1,191 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ask the Spirits</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Location Spirit</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4efe8;
-      color: #111;
-      text-align: center;
-    }
+<style>
+body{
+  font-family:sans-serif;
+  text-align:center;
+  padding:40px;
+  background:white;
+}
 
-    .page {
-      min-height: 100vh;
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 28px;
-      box-sizing: border-box;
-    }
+h1{
+  font-size:32px;
+}
 
-    .active {
-      display: flex;
-    }
+p{
+  font-size:20px;
+  line-height:1.6;
+}
 
-    h1 {
-      font-size: 34px;
-      margin-bottom: 16px;
-      font-weight: 500;
-    }
-
-    p {
-      font-size: 17px;
-      line-height: 1.6;
-      max-width: 340px;
-    }
-
-    button {
-      margin-top: 18px;
-      padding: 14px 22px;
-      border: 1px solid #111;
-      border-radius: 999px;
-      background: transparent;
-      color: #111;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .wifi-box {
-      margin-top: 20px;
-      padding: 18px;
-      border: 1px solid #111;
-      border-radius: 18px;
-      max-width: 340px;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    .wifi-name {
-      font-size: 22px;
-      margin: 10px 0;
-      letter-spacing: 1px;
-    }
-
-    textarea {
-      width: 100%;
-      max-width: 360px;
-      height: 130px;
-      margin-top: 20px;
-      padding: 16px;
-      border: 1px solid #111;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.35);
-      font-size: 16px;
-      box-sizing: border-box;
-      resize: none;
-      color: #111;
-    }
-
-    .small {
-      font-size: 13px;
-      opacity: 0.75;
-      margin-top: 14px;
-    }
-  </style>
+.btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:16px 28px;
+  background:black;
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+  font-size:20px;
+}
+</style>
 </head>
 
 <body>
 
-  <section id="page1" class="page active">
-    <h1>Ask the Spirits</h1>
+<h1>Location Spirit</h1>
 
-    <p>
-      The spirits are nearby.<br>
-      To speak with them, first join their network.
-    </p>
+<p>
+1. Connect to Wi-Fi<br>
+<b>Dont_trust_me_</b>
+</p>
 
-    <div class="wifi-box">
-      <div>Wi-Fi name</div>
-      <div class="wifi-name" id="wifiName">JOIN_THE_SPIRITS</div>
-      <button onclick="copyWifi()">Copy Wi-Fi Name</button>
-    </div>
+<p>
+2. After connecting,<br>
+scan this QR code again
+</p>
 
-    <button onclick="openWifiSettings()">Open Wi-Fi Settings</button>
-    <button onclick="goPage(2)">I Joined the Network</button>
+<p>
+If already connected,<br>
+press the button below.
+</p>
 
-    <p class="small">
-      After joining the Wi-Fi, return to this page.
-    </p>
-  </section>
-
-  <section id="page2" class="page">
-    <h1>Enter Your Question</h1>
-
-    <p>
-      Do not ask for a direct answer.<br>
-      Let the spirits return your question differently.
-    </p>
-
-    <textarea id="question" placeholder="Write your question here..."></textarea>
-
-    <button onclick="submitQuestion()">Send to the Spirits</button>
-    <button onclick="goPage(1)">Back</button>
-  </section>
-
-  <section id="page3" class="page">
-    <h1>Your Question Was Sent</h1>
-
-    <p id="shownQuestion"></p>
-
-    <p>
-      Now turn on the switch in front of the spirit.
-    </p>
-
-    <button onclick="goPage(2)">Ask Again</button>
-  </section>
-
-  <script>
-    const WIFI_NAME = "JOIN_THE_SPIRITS";
-
-    function goPage(num) {
-      document.querySelectorAll(".page").forEach(function(page) {
-        page.classList.remove("active");
-      });
-
-      document.getElementById("page" + num).classList.add("active");
-    }
-
-    function copyWifi() {
-      navigator.clipboard.writeText(WIFI_NAME).then(function() {
-        alert("Wi-Fi name copied:\n\n" + WIFI_NAME);
-      }).catch(function() {
-        alert("Wi-Fi name:\n\n" + WIFI_NAME);
-      });
-    }
-
-    function openWifiSettings() {
-      alert(
-        "If Wi-Fi settings do not open automatically, open Settings manually and join:\n\n" +
-        WIFI_NAME +
-        "\n\nThen return to this page."
-      );
-
-      setTimeout(function() {
-        window.location.href = "App-Prefs:root=WIFI";
-      }, 300);
-    }
-
-    function submitQuestion() {
-      const q = document.getElementById("question").value.trim();
-
-      if (!q) {
-        alert("Please write a question first.");
-        return;
-      }
-
-      localStorage.setItem("spirit_question", q);
-
-      document.getElementById("shownQuestion").innerText = '"' + q + '"';
-
-      goPage(3);
-    }
-  </script>
+<a class="btn" href="http://192.168.4.101">
+Open Location Spirit
+</a>
 
 </body>
 </html>
