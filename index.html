@@ -3,60 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Location Spirit</title>
+<title>Do You Want To Connect With Spirits?</title>
 
 <style>
 body{
-  font-family:sans-serif;
-  text-align:center;
-  padding:40px;
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   background:white;
+  color:black;
+  font-family:Arial, Helvetica, sans-serif;
+  text-align:center;
+}
+
+.wrap{
+  width:90%;
+  max-width:520px;
+  padding:40px 20px;
 }
 
 h1{
-  font-size:32px;
+  font-size:42px;
+  line-height:1.15;
+  margin:0 0 60px;
+  font-weight:800;
 }
 
 p{
-  font-size:20px;
+  font-size:28px;
   line-height:1.6;
+  margin:28px 0;
+}
+
+.wifi{
+  font-weight:800;
 }
 
 .btn{
-  display:inline-block;
-  margin-top:30px;
-  padding:16px 28px;
+  display:block;
+  margin:70px auto 0;
+  padding:24px 20px;
   background:black;
   color:white;
   text-decoration:none;
-  border-radius:8px;
-  font-size:20px;
+  border-radius:14px;
+  font-size:28px;
+  font-weight:700;
 }
 </style>
 </head>
 
 <body>
+  <div class="wrap">
+    <h1>Do You Want To Connect With Spirits?</h1>
 
-<h1>Location Spirit</h1>
+    <p>1. Connect to Wi-Fi</p>
+    <p class="wifi">Dont_trust_me_</p>
 
-<p>
-1. Connect to Wi-Fi<br>
-<b>Dont_trust_me_</b>
-</p>
+    <p>2. After connecting,<br>scan this QR code again</p>
 
-<p>
-2. After connecting,<br>
-scan this QR code again
-</p>
+    <p>If already connected,<br>press the button below.</p>
 
-<p>
-If already connected,<br>
-press the button below.
-</p>
-
-<a class="btn" href="http://192.168.4.101">
-Open Location Spirit
-</a>
-
+    <a class="btn" href="http://192.168.4.101">Connect Anyway</a>
+  </div>
 </body>
 </html>
