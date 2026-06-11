@@ -9,9 +9,6 @@
 body{
   margin:0;
   min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   background:white;
   color:black;
   font-family:Arial, Helvetica, sans-serif;
@@ -21,37 +18,55 @@ body{
 .wrap{
   width:90%;
   max-width:520px;
-  padding:40px 20px;
+  margin:0 auto;
+  padding:120px 20px 40px;
+}
+
+.small{
+  font-size:15px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:28px;
+  opacity:0.55;
 }
 
 h1{
-  font-size:28px;
-  line-height:1.3;
-  margin:0 0 50px;
-  font-weight:700;
+  font-size:30px;
+  line-height:1.25;
+  margin:0 0 48px;
+  font-weight:800;
 }
 
 p{
-  font-size:22px;
-  line-height:1.6;
-  margin:24px 0;
+  font-size:21px;
+  line-height:1.55;
+  margin:22px 0;
 }
 
 .wifi{
+  font-size:24px;
   font-weight:800;
+  margin:16px 0 36px;
+}
+
+.note{
+  font-size:18px;
+  line-height:1.55;
+  opacity:0.75;
+  margin-top:36px;
 }
 
 .btn{
   display:block;
-  margin:60px auto 0;
+  margin:52px auto 0;
   padding:20px;
-  width:220px;
+  width:230px;
   background:black;
   color:white;
   text-decoration:none;
-  border-radius:14px;
-  font-size:24px;
-  font-weight:700;
+  border-radius:18px;
+  font-size:25px;
+  font-weight:800;
   box-sizing:border-box;
 }
 </style>
@@ -61,25 +76,25 @@ p{
 
 <div class="wrap">
 
-<h1>Do You Want To Connect With Spirits?</h1>
+<div class="small">Spirit Network</div>
 
-<p>1. Connect to Wi-Fi</p>
+<h1>Do You Want To Connect<br>With Spirits?</h1>
+
+<p>Connect to Wi-Fi</p>
 
 <p class="wifi">Dont_trust_me_</p>
 
 <p>
-2. After connecting,<br>
-scan this QR code again
+After connecting,<br>
+scan this QR code again.
 </p>
 
-<p>
-If already connected,<br>
+<p class="note">
+If you are already connected,<br>
 press the button below.
 </p>
 
-<a class="btn" href="http://192.168.4.101">
-Why Not?
-</a>
+<a class="btn" href="http://192.168.4.101">Why Not?</a>
 
 </div>
 
